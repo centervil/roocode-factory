@@ -1,5 +1,0 @@
-creation_rules:
-  - path_regex: .*\.enc\.(yaml|json|env|ini|txt)$
-    key_groups:
-      - age:
-          - age10xpl9zzh72dlewjz2ru8xgd72jehz2q5lgecc95lx0aw29l2hfmsfjm3y4
