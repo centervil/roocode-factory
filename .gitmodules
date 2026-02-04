@@ -1,0 +1,6 @@
+[submodule ".roo"]
+	path = .roo
+	url = https://github.com/centervil/my-roo
+[submodule ".gemini"]
+	path = .gemini
+	url = https://github.com/centervil/my-gemini

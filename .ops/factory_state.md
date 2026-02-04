@@ -1,0 +1,29 @@
+# Roocode Factory Status
+
+## Current Focus (Phase 2: Core Feature Implementation)
+- **Primary Goal**: Implement core skills (Logging, State Management) and validate the workflow.
+- **Context**: The structural scaffolding is complete. We are now transitioning to implementing the actual logic (Skills) and testing the Issue-Driven Development (IDD) workflow.
+
+## Roadmap / Milestones
+- [x] **Phase 1: Scaffolding (Infrastructure)**
+    - Directory structure, Mode definitions, Basic Contracts, Operational Rules (.ops).
+- [ ] **Phase 2: Core Implementation (Logic)** <-- **CURRENT STATUS**
+    - Implement Logging Skill.
+    - Implement State Management Skill (for auto-updating factory_state.md).
+    - Refine Orchestrator protocols.
+- [ ] **Phase 3: Validation (Dogfooding)**
+    - Execute actual development tasks using the defined modes.
+    - Verify metric-based quality gates.
+- [ ] **Phase 4: Release Candidate**
+    - Finalize documentation and templates.
+    - Prepare for portability (separation of concerns).
+
+## Active Context & Directives
+- **Workflow**: All work must be done via `work/issue-xxx/`.
+- **Priority**: Prioritize `Logging Skill` as it's a dependency for Audit and Orchestrator.
+
+## Backlog (High Level)
+- [ ] Implement `Logging Skill` (Critical for Audit).
+- [ ] Define concrete thresholds in `quality.yaml` & `metrics.yaml`.
+- [ ] Develop `State Management Skill` to automate this file's updates.
+- [ ] Define automated rejection criteria for Orchestrator.
