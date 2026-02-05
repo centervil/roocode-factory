@@ -17,7 +17,7 @@ gh issue create \
 # Issue 2
 gh issue create \
   --title "Implement State Management Skill" \
-  --body "**Goal**: Automate the updates of `factory_state.md` and `project_state.md`.\n\n**Tasks**:\n- Create a skill to read current issue status.\n- Summarize progress and update the state markdown files.\n- Reduce PM cognitive load." \
+  --body "**Goal**: Automate the updates of `project_state.md`.\n\n**Tasks**:\n- Create a skill to read current issue status.\n- Summarize progress and update the state markdown files.\n- Reduce PM cognitive load." \
   --label "phase:core,enhancement"
 
 # Issue 3
