@@ -54,3 +54,4 @@
 - **Issue/Tasking**: `gh` (GitHub CLI)
 - **State Tracking**: `skill-state-manager`
 - **Audit/Metrics**: `skill-metrics-manager`
+- **Architecture/Skill Management**: `project-architect`
