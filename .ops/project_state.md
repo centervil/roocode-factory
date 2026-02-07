@@ -9,10 +9,13 @@
     - Directory structure, Mode definitions, Basic Contracts, Operational Rules (.ops).
 - [x] **Phase 2: Core Implementation (Logic)** <-- **CURRENT STATUS**
     - [x] Implement Logging Skill.
-    - [x] Implement State Management Skill (In Progress) (for auto-updating project_state.md).
-    - Refine Orchestrator protocols.
+    - [x] Implement State Management Skill (for auto-updating project_state.md).
+    - [ ] Refine Orchestrator protocols.
 - [ ] **Phase 3: Validation (Dogfooding)**
     - Execute actual development tasks using the defined modes.
+    - [x] Refactor agents.md for absolute project-agnosticism.
+    - [x] Define operational protocols in README.md (Source of Truth: GitHub).
+    - [x] Extend skill-architect for Constitution/Map automation.
     - Verify metric-based quality gates.
 - [ ] **Phase 4: Release Candidate**
     - Finalize documentation and templates.

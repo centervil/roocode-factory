@@ -31,3 +31,26 @@
 ## 3. メトリクス管理
 共通基盤（`.gemini` / `.roo`）が提供する収集機能を用い、プロジェクト固有のデータ（自律性・規約遵守率）を `.ops/audit_logs/` に蓄積します。
 詳細は `skill-metrics-manager` および `.ops/metrics/METRICS.md` を参照してください。
+
+## 4. Operational Protocols
+
+エージェントの普遍的な行動規範を定義した `agents.md`（憲法）に対し、本 `README.md` はこのプロジェクト固有の具体的な運用定義（地図）を提供します。
+
+### 4.1. Source of Truth (真実のソース)
+本プロジェクトにおける課題管理とタスクの正解（Source of Truth）は **GitHub Issues** です。エージェントはセッション開始時、または新しいタスクに着手する際、必ず `skill-issue-manager` を有効化し、GitHub の最新状態と同期しなければなりません。
+
+### 4.2. Concrete Mapping (抽象概念の実体定義)
+`agents.md` で使用される抽象的な概念と、本プロジェクトにおける具体的なパスの対応表です。
+
+| 抽象概念 (from agents.md) | 具体的なパス / 実体 |
+| :--- | :--- |
+| **Common Infrastructure** | `.gemini/` (Gemini CLI), `.roo/` (Roo Code) |
+| **Project Operations** | `.ops/` |
+| **Issue Workspace** | `docs/issues/[ID]/` |
+| **Development Log** | `development_logs/` |
+| **Common Skills** | `.gemini/skills/`, `.roo/skills/` |
+
+### 4.3. Authorized Tooling (認定ツール)
+- **Issue/Tasking**: `gh` (GitHub CLI)
+- **State Tracking**: `skill-state-manager`
+- **Audit/Metrics**: `skill-metrics-manager`
