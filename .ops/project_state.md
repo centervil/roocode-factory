@@ -15,8 +15,9 @@
     - Execute actual development tasks using the defined modes.
     - [x] Refactor agents.md for absolute project-agnosticism.
     - [x] Define operational protocols in README.md (Source of Truth: GitHub).
+    - [x] Relocate policies to .ops for tool independence.
     - [x] Extend skill-architect for Constitution/Map automation.
-    - Verify metric-based quality gates.
+    - [x] Verify metric-based quality gates.
 - [ ] **Phase 4: Release Candidate**
     - Finalize documentation and templates.
     - Prepare for portability (separation of concerns).

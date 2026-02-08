@@ -1,0 +1,15 @@
+metrics_definition:
+  code:
+    - target: "Test Status"
+      key: "test_status"
+      threshold: "Passed"
+    - target: "Compliance Score"
+      key: "compliance.score"
+      threshold: ">= 100"
+    - target: "Autonomy Rate"
+      key: "autonomy.rate"
+      threshold: ">= 0.8"
+
+rejection_policy:
+  critical: ["test_status", "compliance.score"]
+  warning: ["autonomy.rate"]

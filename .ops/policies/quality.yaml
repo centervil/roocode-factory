@@ -1,0 +1,15 @@
+quality_policy:
+  levels:
+    critical:
+      definition: "システムの基本動作を損なう、または重大なセキュリティ上の欠陥"
+      action: "即時 Rejection。PM は修正が完了するまで他のタスクの割り当てを停止する。"
+    major:
+      definition: "要件の一部欠落、またはコード規約からの著しい逸脱"
+      action: "Rejection。修正後に Reviewer の再査読を必須とする。"
+    minor:
+      definition: "タイポ、命名の不適切、非効率なロジック"
+      action: "Accept with Comments。次回のタスクで修正を予約する。"
+
+  rejection_threshold:
+    consecutive_failures: 3
+    action_on_breach: "User へのエスカレーション。モードの instruction の見直しを提案。"

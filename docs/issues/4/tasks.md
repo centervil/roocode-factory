@@ -1,0 +1,21 @@
+# Tasks: Issue #4 - Integration of Quality Gates
+
+- [x] **Phase 1: Preparation**
+    - [x] Review current `metrics.json` structure and `metrics.yaml` content.
+    - [x] Identify discrepancies between metric keys and policy targets.
+- [x] **Phase 2: Policy Alignment**
+    - [x] Update `.roo/policies/metrics.yaml` to use keys that match `metrics.json` output.
+    - [x] Define concrete numeric thresholds.
+- [x] **Phase 3: Implementation**
+    - [x] Create `.gemini/skills/skill-metrics-manager/scripts/check-gates.sh` (implemented as check-gates.py).
+    - [x] Implement YAML/JSON parsing for comparison.
+    - [x] Add summary reporting feature.
+- [x] **Phase 4: Integration**
+    - [x] Update `skill-metrics-manager/SKILL.md` to include "Check Quality Gates" capability.
+    - [x] (Optional) Integrate into `run-audit.sh`.
+- [x] **Phase 5: Verification**
+    - [x] Mock a failing metric and verify rejection.
+    - [x] Verify pass state with current repository metrics.
+- [x] **Phase 6: Completion**
+    - [x] Record development log.
+    - [x] Update project state.
