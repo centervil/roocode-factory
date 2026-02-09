@@ -10,7 +10,7 @@
 - [x] **Phase 2: Core Implementation (Logic)** <-- **CURRENT STATUS**
     - [x] Implement Logging Skill.
     - [x] Implement State Management Skill (for auto-updating project_state.md).
-    - [ ] Refine Orchestrator protocols.
+    - [x] Refine Orchestrator protocols.
 - [ ] **Phase 3: Validation (Dogfooding)**
     - Execute actual development tasks using the defined modes.
     - [x] Refactor agents.md for absolute project-agnosticism.
@@ -30,4 +30,4 @@
 - [x] Implement `Logging Skill` (Critical for Audit).
 - [ ] Define concrete thresholds in `quality.yaml` & `metrics.yaml`.
 - [ ] Develop `State Management Skill` to automate this file's updates.
-- [ ] Define automated rejection criteria for Orchestrator.
+- [x] Define automated rejection criteria for Orchestrator.
