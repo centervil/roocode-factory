@@ -13,6 +13,8 @@
     - [x] Refine Orchestrator protocols.
 - [ ] **Phase 3: Validation (Dogfooding)**
     - Execute actual development tasks using the defined modes.
+    - [x] Dogfooding: Refactor a Skill
+    - [x] Unify and Standardize Skill Management across .gemini and .roo
     - [x] Refactor agents.md for absolute project-agnosticism.
     - [x] Define operational protocols in README.md (Source of Truth: GitHub).
     - [x] Relocate policies to .ops for tool independence.
@@ -29,5 +31,5 @@
 ## Backlog (High Level)
 - [x] Implement `Logging Skill` (Critical for Audit).
 - [ ] Define concrete thresholds in `quality.yaml` & `metrics.yaml`.
-- [ ] Develop `State Management Skill` to automate this file's updates.
+- [x] Develop `State Management Skill` to automate this file's updates.
 - [x] Define automated rejection criteria for Orchestrator.
