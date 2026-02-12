@@ -2,3 +2,6 @@
 *.log
 .roo/skills/*/scripts/tmp/
 
+# Audit logs
+.ops/audit_logs/history/
+
