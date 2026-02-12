@@ -1,18 +1,18 @@
 # Roocode Factory Status
 
-## Current Focus (Phase 2: Core Feature Implementation)
-- **Primary Goal**: Implement core skills (Logging, State Management) and validate the workflow.
-- **Context**: The structural scaffolding is complete. We are now transitioning to implementing the actual logic (Skills) and testing the Issue-Driven Development (IDD) workflow.
+## Current Focus (Phase 4: Release Candidate)
+- **Primary Goal**: Finalize documentation, templates, and prepare for portability.
+- **Context**: Core features and IDD workflow have been validated through dogfooding. We are now preparing the repository for its first stable release candidate.
 
 ## Roadmap / Milestones
 - [x] **Phase 1: Scaffolding (Infrastructure)**
     - Directory structure, Mode definitions, Basic Contracts, Operational Rules (.ops).
-- [x] **Phase 2: Core Implementation (Logic)** <-- **CURRENT STATUS**
+- [x] **Phase 2: Core Implementation (Logic)**
     - [x] Implement Logging Skill.
     - [x] Implement State Management Skill (for auto-updating project_state.md).
     - [x] Refine Orchestrator protocols.
-- [ ] **Phase 3: Validation (Dogfooding)**
-    - Execute actual development tasks using the defined modes.
+- [x] **Phase 3: Validation (Dogfooding)**
+    - [x] Execute actual development tasks using the defined modes.
     - [x] Dogfooding: Refactor a Skill
     - [x] Unify and Standardize Skill Management across .gemini and .roo
     - [x] Refactor agents.md for absolute project-agnosticism.
@@ -21,8 +21,9 @@
     - [x] Extend skill-architect for Constitution/Map automation.
     - [x] Verify metric-based quality gates.
 - [ ] **Phase 4: Release Candidate**
-    - Finalize documentation and templates.
-    - Prepare for portability (separation of concerns).
+    - [ ] Finalize documentation and templates.
+    - [ ] Prepare for portability (separation of concerns).
+    - [ ] Perform a final full audit.
 
 ## Active Context & Directives
 - **Workflow**: All work must be done via `work/issue-xxx/`.
