@@ -49,9 +49,20 @@
 | **Issue Workspace** | `docs/issues/[ID]/` |
 | **Development Log** | `development_logs/` |
 | **Common Skills** | `.gemini/skills/`, `.roo/skills/` |
+| **Artifact Templates** | `.ops/templates/` |
 
 ### 4.3. Authorized Tooling (認定ツール)
 - **Issue/Tasking**: `gh` (GitHub CLI)
 - **State Tracking**: `skill-state-manager`
 - **Audit/Metrics**: `skill-metrics-manager`
 - **Architecture/Skill Management**: `project-and-skill-architect`
+
+## 5. Artifact Templates (成果物テンプレート)
+
+プロジェクトにおけるすべての定型成果物は、`.ops/templates/` 配下のテンプレートを「正解」として参照しなければなりません。
+
+- **`.ops/templates/system/`**: システム構成要素（Mode Contract, Skill 定義等）
+- **`.ops/templates/work-artifacts/`**: 業務成果物（Requirements, Design, Tasks, project_state.md 等）
+- **`.ops/templates/logs/`**: 記録・報告書（Audit Report 等）
+
+Skill およびエージェントは、新規ファイル作成時やレビュー時に必ずこれらのテンプレートを読み込み、構造の整合性を担保してください。
