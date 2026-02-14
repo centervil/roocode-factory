@@ -1,7 +1,7 @@
-# Tasks: Issue #15 - Refactor agents.md for absolute project-agnosticism
+# Tasks: Issue #15 - Refactor AGENTS.md for absolute project-agnosticism
 
 - [x] **Phase 1: Audit**
-    - [x] Identify all project-specific terms and paths in `agents.md`.
+    - [x] Identify all project-specific terms and paths in `AGENTS.md`.
 - [x] **Phase 2: Refactoring**
     - [x] Rewrite "2. Behavioral Principles" to use abstract terminology.
     - [x] Rewrite "3. Operational Rules (IDD Lifecycle)" to refer to abstract workspaces.

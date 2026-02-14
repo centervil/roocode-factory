@@ -6,7 +6,7 @@
     - [x] Create the "Concrete Mapping" table.
     - [x] Add "Authorized Tooling" sub-section.
 - [x] **Phase 2: Refinement**
-    - [x] Ensure `agents.md` abstraction aligns with the new mappings in `README.md`.
+    - [x] Ensure `AGENTS.md` abstraction aligns with the new mappings in `README.md`.
     - [x] Verify that the instructions for agents are clear and leave no room for ambiguity.
 - [x] **Phase 3: Completion**
     - [x] Record progress in `development_logs/`.

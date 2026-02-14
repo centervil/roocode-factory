@@ -1,16 +1,16 @@
 # Design: Operational Protocols in README.md
 
 ## New Section: Operational Protocols
-A new section "4. Operational Protocols" will be added to `README.md`. This section will serve as the bridge between the abstract `agents.md` and the concrete project structure.
+A new section "4. Operational Protocols" will be added to `README.md`. This section will serve as the bridge between the abstract `AGENTS.md` and the concrete project structure.
 
 ### 4.1. Source of Truth
 - Specify GitHub Issues as the authoritative source for tasking and status.
 - Instruct agents to use `skill-issue-manager` (or `gh` commands as a fallback) to synchronize state.
 
 ### 4.2. Concrete Mapping (The "Map")
-A table to translate abstract concepts from `agents.md` into concrete paths.
+A table to translate abstract concepts from `AGENTS.md` into concrete paths.
 
-| Abstract Concept (from agents.md) | Concrete Path / Entity |
+| Abstract Concept (from AGENTS.md) | Concrete Path / Entity |
 | :--- | :--- |
 | **Common Infrastructure** | `.gemini/` (Gemini CLI), `.roo/` (Roo Code) |
 | **Project Operations** | `.ops/` |

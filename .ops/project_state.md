@@ -15,7 +15,7 @@
     - [x] Execute actual development tasks using the defined modes.
     - [x] Dogfooding: Refactor a Skill
     - [x] Unify and Standardize Skill Management across .gemini and .roo
-    - [x] Refactor agents.md for absolute project-agnosticism.
+    - [x] Refactor AGENTS.md for absolute project-agnosticism.
     - [x] Define operational protocols in README.md (Source of Truth: GitHub).
     - [x] Relocate policies to .ops for tool independence.
     - [x] Extend skill-architect for Constitution/Map automation.

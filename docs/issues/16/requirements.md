@@ -1,7 +1,7 @@
 # Requirements: Define Project-Specific Source of Truth and Protocols in README.md
 
 ## Context
-Following the refactoring of `agents.md` to be project-agnostic (Issue #15), we must now explicitly define the concrete operational realities in `README.md`.
+Following the refactoring of `AGENTS.md` to be project-agnostic (Issue #15), we must now explicitly define the concrete operational realities in `README.md`.
 
 ## Goal
 Establish `README.md` as the absolute "Map" that translates abstract mandates into concrete actions for this specific project.
@@ -11,7 +11,7 @@ Establish `README.md` as the absolute "Map" that translates abstract mandates in
     - Explicitly state that **GitHub Issues** are the single source of truth for task management.
     - Mandate that Agents must execute specific skills (e.g., `skill-issue-manager`) to sync context at the start of any session.
 - [ ] **Concrete Path Mapping**:
-    - Create a mapping table linking `agents.md` abstract terms to concrete paths:
+    - Create a mapping table linking `AGENTS.md` abstract terms to concrete paths:
         - Common Infrastructure -> `.gemini/`, `.roo/`
         - Project Operations -> `.ops/`
         - Issue Workspace -> `docs/issues/[ID]/`

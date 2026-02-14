@@ -1,4 +1,4 @@
-# Design: Abstracting behavioral principles in agents.md
+# Design: Abstracting behavioral principles in AGENTS.md
 
 ## Abstraction Mapping
 The following project-specific terms will be replaced with abstract concepts:
@@ -15,4 +15,4 @@ The following project-specific terms will be replaced with abstract concepts:
 Instead of hardcoding paths, the principles will refer to the **"Three-Tier Architecture"** (Infrastructure, Shared Config, Project Operations) or the definitions provided in the project's root `README.md`.
 
 ## Integration with README.md
-`agents.md` will explicitly state that the concrete folder structure and project goals are defined in `README.md`, which serves as the "Map" for the agent.
+`AGENTS.md` will explicitly state that the concrete folder structure and project goals are defined in `README.md`, which serves as the "Map" for the agent.

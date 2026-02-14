@@ -34,15 +34,15 @@
 
 ## 4. Operational Protocols
 
-エージェントの普遍的な行動規範を定義した `agents.md`（憲法）に対し、本 `README.md` はこのプロジェクト固有の具体的な運用定義（地図）を提供します。
+エージェントの普遍的な行動規範を定義した `AGENTS.md`（憲法）に対し、本 `README.md` はこのプロジェクト固有の具体的な運用定義（地図）を提供します。
 
 ### 4.1. Source of Truth (真実のソース)
 本プロジェクトにおける課題管理とタスクの正解（Source of Truth）は **GitHub Issues** です。エージェントはセッション開始時、または新しいタスクに着手する際、必ず `skill-issue-manager` を有効化し、GitHub の最新状態と同期しなければなりません。
 
 ### 4.2. Concrete Mapping (抽象概念の実体定義)
-`agents.md` で使用される抽象的な概念と、本プロジェクトにおける具体的なパスの対応表です。
+`AGENTS.md` で使用される抽象的な概念と、本プロジェクトにおける具体的なパスの対応表です。
 
-| 抽象概念 (from agents.md) | 具体的なパス / 実体 |
+| 抽象概念 (from AGENTS.md) | 具体的なパス / 実体 |
 | :--- | :--- |
 | **Common Infrastructure** | `.gemini/` (Gemini CLI), `.roo/` (Roo Code) |
 | **Project Operations** | `.ops/` |
