@@ -1,1 +1,1 @@
-../../../.roo/templates/system/00-contract.md
+../../../.roo/skills/project-and-skill-architect/templates/mode/00-contract.md

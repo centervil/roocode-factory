@@ -1,1 +1,1 @@
-../../../.roo/templates/system/skill-definition.md
+../../../.roo/skills/project-and-skill-architect/templates/skill-definition.md

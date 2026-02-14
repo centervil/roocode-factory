@@ -1,1 +1,1 @@
-../../../.roo/templates/system/10-operational-guidelines.md
+../../../.roo/skills/project-and-skill-architect/templates/mode/10-operational-guidelines.md

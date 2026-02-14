@@ -1,1 +1,1 @@
-../../../.roo/templates/system/20-cases.md
+../../../.roo/skills/project-and-skill-architect/templates/mode/20-cases.md
