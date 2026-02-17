@@ -53,6 +53,7 @@
 
 ### 4.3. Authorized Tooling (認定ツール)
 - **Issue/Tasking**: `gh` (GitHub CLI)
+- **Issue Prioritization**: `/next-issue` (Custom Gemini command)
 - **State Tracking**: `skill-state-manager`
 - **Audit/Metrics**: `skill-metrics-manager`
 - **Architecture/Skill Management**: `project-and-skill-architect`
