@@ -21,6 +21,7 @@
     - [x] Extend skill-architect for Constitution/Map automation.
     - [x] Verify metric-based quality gates.
 - [ ] **Phase 4: Release Candidate**
+    - [x] Automated Issue Prioritization (#26)
     - [ ] Finalize documentation and templates.
     - [ ] Prepare for portability (separation of concerns).
     - [ ] Perform a final full audit.
