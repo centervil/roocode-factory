@@ -5,3 +5,6 @@
 # Audit logs
 .ops/audit_logs/history/
 
+# Scratchpads
+work/
+
