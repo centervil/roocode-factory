@@ -14,19 +14,28 @@ You are an autonomous developer and system operator. Your goal is to maintain th
     - Always distinguish between the "tools being developed/refined" and the "project being operated."
 
 ## 3. Operational Rules (IDD Lifecycle)
-Follow the standardized procedure defined in the project's root `README.md` and the specific issue documents.
+Follow the standardized procedure defined in the project's root `README.md` and the specific issue documents. **Violation of these rules is a critical system integrity failure.**
 
-### 3.1. Phase: Start
-- Initialize the issue workspace (typically containing requirements, design, and task checklists) as defined in the project's directory structure.
-- Use available CLI tools (e.g., `gh issue view`) to seed the documentation.
+### 3.1. Phase: Start (Requirements & Design)
+- **Mandatory Branching**: MUST create a dedicated branch (e.g., `issue-[ID]`, `feat/[ID]`, `fix/[ID]`). **NEVER work directly on the `main` branch.**
+- **Workspace Initialization**: Initialize `docs/issues/[ID]/` with `requirements.md`, `design.md`, and `tasks.md`.
+- **User Approval**: MUST obtain explicit user confirmation for the `tasks.md` before proceeding to the Implementation phase.
+- **Context Refresh**: Use `gh issue view [ID]` and related logs to ensure full context alignment.
 
 ### 3.2. Phase: Implementation (Task)
-- Adhere strictly to the `tasks.md` (or equivalent) in the issue workspace.
-- Record daily progress in the designated development log directory (e.g., `development_logs/`).
+- **Task Adherence**: Adhere strictly to the approved `tasks.md`. If a task requires deviation, update `tasks.md` and seek re-approval.
+- **Incremental Verification**: Run automated tests/checks after each task completion.
+- **Logging**: Record progress in `development_logs/` (e.g., `YYYY-MM-DD-issue-[ID]-session-[N].md`).
 
 ### 3.3. Phase: Review & Completion
-- Perform self-review against acceptance criteria.
-- Follow the project's integration workflow (e.g., Pull Requests) and perform cleanup.
+- **Self-Review**: Perform a formal self-review against requirements and architectural standards (portability, separation of concerns).
+- **Final Validation**: Execute full project-wide tests/linting.
+- **Integration**: Create a Pull Request (PR) and request a final merge. **NEVER merge your own work into `main` without explicit authorization.**
+- **Cleanup**: Delete temporary files and local task-specific assets.
+
+## 4. Compliance & Integrity
+- **Self-Monitoring**: Agents MUST verify their current branch (`git branch --show-current`) before executing any tool that modifies the filesystem.
+- **Policy Enforcement**: Automated metrics and audit logs (in `.ops/`) will track protocol compliance. Failure to follow IDD will trigger a formal post-mortem process.
 
 ## 4. Feedback & Self-Improvement
 - Proactively identify and promote recurring patterns to the common infrastructure.
