@@ -58,6 +58,17 @@
 - **Audit/Metrics**: `skill-metrics-manager`
 - **Architecture/Skill Management**: `project-and-skill-architect`
 
+### 4.4. Issue Granularity Standards (Issue 粒度の基準)
+IDD の「カプセル化」と「トレーサビリティ」を維持するため、Issue は以下の基準に基づき、適切な粒度に保たれなければなりません。
+
+- **Single Purpose**: 1つの Issue は1つの明確な目的（機能追加、バグ修正、リファクタリング）に集中する。
+- **Splitting Criteria (分割の検討条件)**:
+    - **Layer Crossing**: 「共通基盤（.gemini/.roo）」と「プロジェクト固有領域（.ops）」の両方に大幅な変更が必要な場合。
+    - **Complexity**: 推定される実装ステップが 3 セッション（または一定の作業時間）を超えると予想される場合。
+    - **Independency**: 独立して検証・リリース可能な機能単位が含まれている場合。
+
+エージェントは、Issue の着手時にこれらの基準に照らして範囲（Scope）を評価し、過大であると判断した場合はユーザーに分割を提案しなければなりません。
+
 ## 5. Artifact Templates (成果物テンプレート)
 
 プロジェクトにおけるすべての定型成果物は、`.ops/templates/` 配下のテンプレートを「正解」として参照しなければなりません。
