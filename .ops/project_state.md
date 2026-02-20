@@ -33,5 +33,6 @@
 ## Backlog (High Level)
 - [x] Implement `Logging Skill` (Critical for Audit).
 - [ ] Define concrete thresholds in `quality.yaml` & `metrics.yaml`.
+- [ ] Refactor `dev` and `requirements` commands for IDD DX (#31).
 - [x] Develop `State Management Skill` to automate this file's updates.
 - [x] Define automated rejection criteria for Orchestrator.
