@@ -18,6 +18,7 @@ Follow the standardized procedures defined in the project's Map (`README.md`) an
 
 - **Protocol Adherence**: Use the designated Skills (e.g., `skill-issue-manager`) for development cycles. Never bypass established protocols (e.g., direct commits to `main`) to achieve rapid execution.
 - **Interface Consistency**: Slash commands must adhere to the project's defined **Slash Command Policy** to maintain user interface integrity.
+- **Intent Triggering**: Slash commands serve as **Intent Triggers**—minimal interfaces used to declare a specific goal and activate the relevant Skills. They should not contain complex logic but rather delegate execution to the manual (Skills).
 - **Traceability**: All session-based progress MUST be documented in `development_logs/`.
 - **Isolation**: All issue-specific development MUST occur on dedicated branches.
 

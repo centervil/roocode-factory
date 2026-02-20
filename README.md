@@ -50,6 +50,7 @@
 | **Development Log** | `development_logs/` |
 | **Common Skills** | `.gemini/skills/`, `.roo/skills/` |
 | **Slash Command Policy** | `docs/policies/slash-commands.md` |
+| **Slash Commands** | `.gemini/commands/`, `.roo/commands/` | **Intent Triggers** (意図の起動)。Skillを有効化し、特定のコンテキストを開始するための最小インターフェース。 |
 | **Artifact Templates** | `.ops/templates/` |
 
 ### 4.3. Authorized Tooling (認定ツール)

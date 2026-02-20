@@ -1,18 +1,18 @@
-# Tasks: Issue #22 - スラッシュコマンドの運用方針策定
+# Tasks: Issue #22 - スラッシュコマンドの定義統合とメタポリシーの策定（完遂）
 
-- [x] **Phase 1: Policy Creation**
-    - [x] `docs/policies/slash-commands.md` の作成（命名規則、ディレクトリ構造、スキーマ、プロンプト基準の明記）<!-- id: 1 -->
-    - [x] 完了後の自己レビュー <!-- id: 2 -->
+- [x] **Phase 1: マスター定義の設計と統合**
+    - [x] `work/my-commands/` をマスターディレクトリとして構築 <!-- id: 1 -->
+    - [x] 全コマンドの TOML 化（Gemini CLI 優先 + Roo Code メタデータ統合）<!-- id: 2 -->
+    - [x] シンボリックリンク (`.md` -> `.toml`) の作成 <!-- id: 3 -->
 
-- [x] **Phase 2: Audit & Refactoring**
-    - [x] `.gemini/commands/` 内の既存 TOML ファイルの監査と調整（命名規則、プロンプト基準）<!-- id: 3 -->
-    - [x] `.roo/commands/` 内の Markdown ファイルの監査と調整 <!-- id: 4 -->
+- [x] **Phase 2: 物理的構造の統合**
+    - [x] `.gemini/commands` および `.roo/commands` をマスターディレクトリへのリンクに置き換え <!-- id: 4 -->
+    - [x] 統合されたコマンド群の動作確認（ファイル構造の整合性）<!-- id: 5 -->
 
-- [x] **Phase 3: Integration & Update**
-    - [x] `skill-project-and-skill-architect` の `setup-project.sh` 内の初期コマンド生成テンプレートの修正 <!-- id: 5 -->
-    - [x] `AGENTS.md` にスラッシュコマンド運用方針への参照を追加 <!-- id: 6 -->
+- [x] **Phase 3: メタポリシーの確立**
+    - [x] `AGENTS.md` に「意図の起動 (Intent Trigger)」としての定義を追加 <!-- id: 6 -->
+    - [x] `README.md` の対応表を最新化 <!-- id: 7 -->
 
-- [x] **Phase 4: Completion**
-    - [x] 最終検証（全コマンドの読み込み確認）<!-- id: 7 -->
+- [x] **Phase 4: 完了**
     - [x] 開発ログの作成 <!-- id: 8 -->
-    - [x] PR作成 <!-- id: 9 -->
+    - [x] コミットと PR 更新 <!-- id: 9 -->
