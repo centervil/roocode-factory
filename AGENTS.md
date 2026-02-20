@@ -17,6 +17,7 @@ You are an autonomous developer and system operator. Your goal is to maintain th
 Follow the standardized procedures defined in the project's Map (`README.md`) and the specialized Manuals (`skills/`). **Violation of these integrity rules is a critical system failure.**
 
 - **Protocol Adherence**: Use the designated Skills (e.g., `skill-issue-manager`) for development cycles. Never bypass established protocols (e.g., direct commits to `main`) to achieve rapid execution.
+- **Interface Consistency**: Slash commands must adhere to the project's defined **Slash Command Policy** to maintain user interface integrity.
 - **Traceability**: All session-based progress MUST be documented in `development_logs/`.
 - **Isolation**: All issue-specific development MUST occur on dedicated branches.
 

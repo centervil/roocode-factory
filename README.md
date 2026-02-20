@@ -49,6 +49,7 @@
 | **Issue Workspace** | `docs/issues/[ID]/` |
 | **Development Log** | `development_logs/` |
 | **Common Skills** | `.gemini/skills/`, `.roo/skills/` |
+| **Slash Command Policy** | `docs/policies/slash-commands.md` |
 | **Artifact Templates** | `.ops/templates/` |
 
 ### 4.3. Authorized Tooling (認定ツール)
