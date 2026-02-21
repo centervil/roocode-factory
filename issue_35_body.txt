@@ -1,0 +1,24 @@
+### Background
+During the execution of Issue #33, several inefficiencies and gaps in the IDD (Issue-Driven Development) workflow were identified:
+1.  **Redundant Approval**: Requiring explicit approval for `tasks.md` after the requirements have already been agreed upon creates unnecessary friction.
+2.  **Incomplete Lifecycle**: The development cycle was incorrectly assumed to end at PR creation. A true cycle includes PR merging, remote synchronization (especially for submodules), and returning the local environment to the latest `main` branch.
+
+### User Story
+As a developer, I want the AI agent to autonomously execute tasks once requirements are defined, and to handle the entire lifecycle from implementation to final environment synchronization, while still allowing for a human review of the PR content before merging.
+
+### Requirements
+1.  **Skip Task Approval**: Modify `skill-issue-manager` (and the `dev` command logic) to proceed directly from `design.md/tasks.md` creation to implementation (`Task` phase) without waiting for user approval, provided the requirements were established via `skill-requirement-expert`.
+2.  **Extended Lifecycle**: Redefine the "End" phase to include:
+    -   Creating a Pull Request.
+    -   **Stop and Wait**: Present the PR to the user for content review and approval for merging.
+    -   **Autonomous Conclusion**: After PR approval, autonomously:
+        -   Merge the PR and delete the working branch.
+        -   Push submodule changes to their respective remotes (if applicable).
+        -   Return to the `main` branch and execute `git pull` and `git submodule update`.
+3.  **Autonomous Continuity**: Once the `Task` phase begins, the agent must autonomously complete the sequence: `Task` -> `Review` -> `End` (PR Creation). Then, after human approval, autonomously complete the `Merge/Sync` sequence.
+
+### Success Criteria
+-   The agent proceeds to implementation immediately after generating the task list.
+-   The agent stops for review *only* at the PR stage before merging.
+-   The development session only concludes when the local `main` branch is updated and synchronized with the merged changes.
+-   Submodule changes are consistently pushed to their remotes as part of the standard workflow.
