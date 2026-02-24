@@ -1,1 +1,1 @@
-../../../.roo/skills/project-and-skill-architect/templates/skill-definition.md
+../../../.gemini/skills/skill-project-and-skill-architect/templates/skill-definition.md

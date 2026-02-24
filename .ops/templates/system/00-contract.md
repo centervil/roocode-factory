@@ -1,1 +1,1 @@
-../../../.roo/skills/project-and-skill-architect/templates/mode-00-contract.md
+../../../.gemini/skills/skill-project-and-skill-architect/templates/mode-00-contract.md

@@ -28,55 +28,24 @@
 - **Task**: `tasks.md` に基づき実装。
 - **Review/End**: 成果物をレビューし、PRを作成・マージ。
 
-## 3. メトリクス管理
+詳細は **[AGENTS.md](./AGENTS.md)** を参照してください。
+
+## 3. 物理ディレクトリ構成 (Map)
+
+| ディレクトリ | 内容 |
+| :--- | :--- |
+| `docs/issues/` | 各 Issue の仕様書、設計、タスクリスト。 |
+| `development_logs/` | 各セッションの作業記録（トレーサビリティ）。 |
+| `.ops/metrics/` | プロジェクトの自律性・規約遵守率の計測定義。 |
+| `.ops/templates/` | 成果物の最新テンプレート（SSOT）。 |
+| `.gemini/skills/` | Gemini CLI 向けの機能モジュール（共通 Skill）。 |
+| `.roo/rules-*/` | Roo Code 向けの各 Mode 定義（00-contract, 10-operational-guidelines）。 |
+
+## 4. 運用・監査
 共通基盤（`.gemini` / `.roo`）が提供する収集機能を用い、プロジェクト固有のデータ（自律性・規約遵守率）を `.ops/audit_logs/` に蓄積します。
 詳細は `skill-metrics-manager` および `.ops/metrics/METRICS.md` を参照してください。
 
-## 4. Operational Protocols
-
-エージェントの普遍的な行動規範を定義した `AGENTS.md`（憲法）に対し、本 `README.md` はこのプロジェクト固有の具体的な運用定義（地図）を提供します。
-
-### 4.1. Source of Truth (真実のソース)
-本プロジェクトにおける課題管理とタスクの正解（Source of Truth）は **GitHub Issues** です。エージェントはセッション開始時、または新しいタスクに着手する際、必ず `skill-issue-manager` を有効化し、GitHub の最新状態と同期しなければなりません。
-
-### 4.2. Concrete Mapping (抽象概念の実体定義)
-`AGENTS.md` で使用される抽象的な概念と、本プロジェクトにおける具体的なパスの対応表です。
-
-| 抽象概念 (from AGENTS.md) | 具体的なパス / 実体 |
-| :--- | :--- |
-| **Common Infrastructure** | `.gemini/` (Gemini CLI), `.roo/` (Roo Code) |
-| **Project Operations** | `.ops/` |
-| **Issue Workspace** | `docs/issues/[ID]/` |
-| **Development Log** | `development_logs/` |
-| **Common Skills** | `.gemini/skills/`, `.roo/skills/` |
-| **Slash Command Policy** | `docs/policies/slash-commands.md` |
-| **Slash Commands** | `.gemini/commands/`, `.roo/commands/` | **Intent Triggers** (意図の起動)。Skillを有効化し、特定のコンテキストを開始するための最小インターフェース。 |
-| **Artifact Templates** | `.ops/templates/` |
-
-### 4.3. Authorized Tooling (認定ツール)
-- **Issue/Tasking**: `gh` (GitHub CLI)
-- **Issue Prioritization**: `/next-issue` (Custom Gemini command)
-- **State Tracking**: `skill-state-manager`
-- **Audit/Metrics**: `skill-metrics-manager`
-- **Architecture/Skill Management**: `project-and-skill-architect`
-
-### 4.4. Issue Granularity Standards (Issue 粒度の基準)
-IDD の「カプセル化」と「トレーサビリティ」を維持するため、Issue は以下の基準に基づき、適切な粒度に保たれなければなりません。
-
-- **Single Purpose**: 1つの Issue は1つの明確な目的（機能追加、バグ修正、リファクタリング）に集中する。
-- **Splitting Criteria (分割の検討条件)**:
-    - **Layer Crossing**: 「共通基盤（.gemini/.roo）」と「プロジェクト固有領域（.ops）」の両方に大幅な変更が必要な場合。
-    - **Complexity**: 推定される実装ステップが 3 セッション（または一定の作業時間）を超えると予想される場合。
-    - **Independency**: 独立して検証・リリース可能な機能単位が含まれている場合。
-
-エージェントは、Issue の着手時にこれらの基準に照らして範囲（Scope）を評価し、過大であると判断した場合はユーザーに分割を提案しなければなりません。
-
-## 5. Artifact Templates (成果物テンプレート)
+## 5. 成果物テンプレート (Artifact Templates)
 
 プロジェクトにおけるすべての定型成果物は、`.ops/templates/` 配下のテンプレートを「正解」として参照しなければなりません。
-
-- **`.ops/templates/system/`**: システム構成要素（Mode Contract, Skill 定義等）
-- **`.ops/templates/work-artifacts/`**: 業務成果物（Requirements, Design, Tasks, project_state.md 等）
-- **`.ops/templates/logs/`**: 記録・報告書（Audit Report 等）
-
 Skill およびエージェントは、新規ファイル作成時やレビュー時に必ずこれらのテンプレートを読み込み、構造の整合性を担保してください。

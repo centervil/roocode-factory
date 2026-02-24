@@ -1,1 +1,1 @@
-../../../.roo/skills/project-and-skill-architect/templates/mode-10-operational-guidelines.md
+../../../.gemini/skills/skill-project-and-skill-architect/templates/mode-10-operational-guidelines.md
