@@ -20,5 +20,9 @@
 - [ ] Prepare for final system validation and Release.
 
 ## Metrics (Snapshot)
-- **Compliance**: 100% (IDD Workflow strictly followed)
-- **Autonomy**: High
+- **System Integrity (Dynamic)**:
+    - Protocol Fidelity: 50.0%
+    - Behavioral Alignment: 100.0%
+    - Overall Compliance Score: 75.0
+- **Autonomy Rate**: 100.0%
+

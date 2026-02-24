@@ -1,0 +1,12 @@
+{
+  "session_id": "compl-test",
+  "timestamp": "2026-02-24T14:15:40Z",
+  "source_mode": "code",
+  "audit": {
+    "goal": "Test compliant logging",
+    "result": "Success",
+    "expectation_gap": "None",
+    "improvement_action": "None",
+    "protocol_fidelity": true
+  }
+}

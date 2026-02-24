@@ -1,20 +1,16 @@
 {
-  "timestamp": "2026-02-12T16:31:56Z",
+  "timestamp": "2026-02-24T14:15:51Z",
   "metrics": {
-    "code_churn": {
-      "commit_count_last_7_days": 22,
-      "lines_changed_last_7_days": 0
-    },
-    "test_status": "Passed",
-    "test_exit_code": 0,
-    "autonomy": {
-      "total_actions": 100,
-      "interventions": 5,
-      "rate": 0.95
-    },
     "compliance": {
-      "score": 100,
-      "max_score": 100
+      "protocol_fidelity": 0.5,
+      "behavioral_alignment": 1.0,
+      "score": 75.0,
+      "sessions_analyzed": 2
+    },
+    "autonomy": {
+      "total_actions": 20,
+      "interventions": 0,
+      "rate": 1.0
     }
   }
 }
