@@ -41,7 +41,21 @@ default = "default-value" (optional)
 ```
 
 ### 4.2 .roo (Markdown)
-- 各カスタムモードの `Custom Instructions` として定義します。
+各カスタムモードの `Custom Instructions` として定義します。YAML Frontmatter を使用してメタデータを記述し、本文に具体的な指示を記述します。
+
+```markdown
+---
+name: "command-name"
+description: "ユーザー向けの簡潔な説明"
+---
+あなたは、[役割] を担うエージェントです。
+\`activate_skill\` を使用して [スキル名] を有効化し、以下の引数に基づきプロセスを開始してください。
+
+引数: \`{{args}}\`
+- [引数の処理ルール]
+
+[具体的なフローや完了定義]
+```
 
 ## 5. プロンプトエンジニアリング基準 (Prompting Standards)
 - **役割の明示**: 「あなたは〇〇エージェントです」という役割定義を冒頭に含めます。
