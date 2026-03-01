@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     sudo \
     lsb-release \
     openssh-server \
+    tmux \
     && rm -rf /var/lib/apt/lists/*
 
 # Setup SSH directory
