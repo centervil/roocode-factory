@@ -9,6 +9,10 @@ echo "Setting permissions for config directories..."
 sudo chown -R coder:coder /home/coder/.local/share/code-server
 sudo chown -R coder:coder /home/coder/.config
 
+# Start sshd
+echo "Starting sshd..."
+sudo service ssh start
+
 # Start tailscaled in background
 echo "Starting tailscaled..."
 sudo tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock &
@@ -16,7 +20,7 @@ sudo tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailsc
 # Optional: if an auth key is provided, try to authenticate
 if [ -n "$TAILSCALE_AUTH_KEY" ]; then
     echo "Authenticating Tailscale..."
-    sudo tailscale up --authkey=$TAILSCALE_AUTH_KEY --hostname=roo-orchestrator --accept-routes
+    sudo tailscale up --authkey=$TAILSCALE_AUTH_KEY --hostname=roo-orchestrator --accept-routes --ssh
 fi
 
 # Start code-server

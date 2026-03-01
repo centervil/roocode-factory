@@ -10,7 +10,11 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     sudo \
     lsb-release \
+    openssh-server \
     && rm -rf /var/lib/apt/lists/*
+
+# Setup SSH directory
+RUN mkdir -p /var/run/sshd
 
 # Install Tailscale
 RUN curl -fsSL https://tailscale.com/install.sh | sh
