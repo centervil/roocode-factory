@@ -14,6 +14,7 @@ services:
     volumes:
       - tailscale-data:/var/lib/tailscale
       - code-server-data:/home/coder/.local/share/code-server
+      - gh-config-data:/home/coder/.config/gh
       - ..:/home/coder/project
     environment:
       - PASSWORD=${CODE_SERVER_PASSWORD:-password}
@@ -26,3 +27,4 @@ services:
 volumes:
   tailscale-data:
   code-server-data:
+  gh-config-data:

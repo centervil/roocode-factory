@@ -4,9 +4,10 @@
 # But since we use a named volume, it might have wrong permissions.
 # sudo chown -R root:root /var/lib/tailscale
 
-# Ensure code-server data directory is owned by coder
-echo "Setting permissions for code-server data directory..."
+# Ensure code-server and gh config directories are owned by coder
+echo "Setting permissions for config directories..."
 sudo chown -R coder:coder /home/coder/.local/share/code-server
+sudo chown -R coder:coder /home/coder/.config
 
 # Start tailscaled in background
 echo "Starting tailscaled..."
