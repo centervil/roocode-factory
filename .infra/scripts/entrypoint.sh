@@ -19,6 +19,7 @@ echo "Setting permissions for config directories..."
 sudo chown -R coder:coder /home/coder/.local/share/code-server
 sudo chown -R coder:coder /home/coder/.config
 sudo chown -R coder:coder /home/coder/.gemini
+[ -f /home/coder/.tmux.conf ] && sudo chown coder:coder /home/coder/.tmux.conf
 sudo chown -R coder:coder /home/coder/project
 
 # Start sshd

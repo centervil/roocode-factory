@@ -16,6 +16,7 @@ services:
       - code-server-data:/home/coder/.local/share/code-server
       - gh-config-data:/home/coder/.config/gh
       - ~/.gemini:/home/coder/.gemini
+      - ~/.tmux.conf:/home/coder/.tmux.conf
       - ..:/home/coder/project
     environment:
       - PASSWORD=${CODE_SERVER_PASSWORD:-password}
