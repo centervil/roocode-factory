@@ -7,7 +7,7 @@
     - [x] `tasks.md` 作成
 - [x] Phase 2: Implementation (Task)
     - [x] `.infra/` ディレクトリ作成
-    - [x] `.infra/Dockerfile` 作成 (code-server + Tailscale + Playwright + gh)
+    - [x] `.infra/Dockerfile` 作成 (code-server + Tailscale + Playwright + gh + Gemini CLI)
     - [x] `.infra/docker-compose.yml` 作成
     - [x] `.infra/scripts/entrypoint.sh` 作成 (起動スクリプト)
     - [x] `.infra/.env.example` 作成
