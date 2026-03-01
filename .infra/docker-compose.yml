@@ -15,10 +15,13 @@ services:
       - tailscale-data:/var/lib/tailscale
       - code-server-data:/home/coder/.local/share/code-server
       - gh-config-data:/home/coder/.config/gh
+      - ~/.gemini:/home/coder/.gemini
       - ..:/home/coder/project
     environment:
       - PASSWORD=${CODE_SERVER_PASSWORD:-password}
       - TAILSCALE_AUTH_KEY=${TAILSCALE_AUTH_KEY}
+      - PUID=${PUID:-1002}
+      - PGID=${PGID:-1002}
     restart: unless-stopped
     # Local access for initial setup (can be commented out once Tailscale is ready)
     ports:

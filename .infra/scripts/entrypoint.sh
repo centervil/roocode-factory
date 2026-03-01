@@ -1,13 +1,25 @@
 #!/bin/bash
 
+# Modify coder user UID/GID if PUID/PGID are provided
+if [ -n "$PUID" ]; then
+    echo "Updating coder UID to $PUID"
+    sudo usermod -u "$PUID" coder
+fi
+if [ -n "$PGID" ]; then
+    echo "Updating coder GID to $PGID"
+    sudo groupmod -g "$PGID" coder
+fi
+
 # Ensure /var/lib/tailscale is owned by root (as required by tailscaled)
 # But since we use a named volume, it might have wrong permissions.
 # sudo chown -R root:root /var/lib/tailscale
 
-# Ensure code-server and gh config directories are owned by coder
+# Ensure code-server, gh, and gemini config directories are owned by coder
 echo "Setting permissions for config directories..."
 sudo chown -R coder:coder /home/coder/.local/share/code-server
 sudo chown -R coder:coder /home/coder/.config
+sudo chown -R coder:coder /home/coder/.gemini
+sudo chown -R coder:coder /home/coder/project
 
 # Start sshd
 echo "Starting sshd..."

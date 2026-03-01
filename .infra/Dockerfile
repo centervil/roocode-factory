@@ -41,9 +41,9 @@ USER coder
 # Install Playwright browsers (in coder user space)
 RUN npx playwright install
 
-# Install playwright npm package globally and set NODE_PATH
+# Install playwright and gemini-cli npm packages globally and set NODE_PATH
 USER root
-RUN npm install -g playwright
+RUN npm install -g playwright @google/gemini-cli
 ENV NODE_PATH=/usr/lib/node_modules
 USER coder
 
