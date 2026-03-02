@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  roo-orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roo-orchestrator
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    volumes:
+      - tailscale-data:/var/lib/tailscale
+      - code-server-data:/home/coder/.local/share/code-server
+      - gh-config-data:/home/coder/.config/gh
+      - ~/.gemini:/home/coder/.gemini
+      - ~/.tmux.conf:/home/coder/.tmux.conf
+      - ..:/home/coder/project
+    environment:
+      - PASSWORD=${CODE_SERVER_PASSWORD:-password}
+      - TAILSCALE_AUTH_KEY=${TAILSCALE_AUTH_KEY}
+      - PUID=${PUID:-1002}
+      - PGID=${PGID:-1002}
+    restart: unless-stopped
+    # Local access for initial setup (can be commented out once Tailscale is ready)
+    ports:
+      - "8080:8080"
+
+volumes:
+  tailscale-data:
+  code-server-data:
+  gh-config-data:

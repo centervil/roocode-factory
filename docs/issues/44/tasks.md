@@ -1,0 +1,21 @@
+# Tasks: 【MVP】Roo-Orchestrator インフラ基盤の構築 (Docker + Tailscale + Playwright)
+
+- [x] Phase 1: Start
+    - [x] Issue 分析
+    - [x] Branch (`issue-44-infra-base`) / Workspace (`docs/issues/44/`) 作成
+    - [x] `design.md` 作成
+    - [x] `tasks.md` 作成
+- [x] Phase 2: Implementation (Task)
+    - [x] `.infra/` ディレクトリ作成
+    - [x] `.infra/Dockerfile` 作成 (code-server + Tailscale + Playwright + gh + Gemini CLI)
+    - [x] `.infra/docker-compose.yml` 作成
+    - [x] `.infra/scripts/entrypoint.sh` 作成 (起動スクリプト)
+    - [x] `.infra/.env.example` 作成
+- [x] Phase 3: Review
+    - [x] `docker-compose up -d` 実行・起動確認
+    - [x] Tailscale 接続確認 (`tailscale status`)
+    - [x] code-server の認証・設定の永続化テスト (ボリューム確認)
+    - [x] Playwright による code-server DOM 取得テストスクリプトの実行
+- [x] Phase 4: End
+    - [x] PR 作成 (#48)
+    - [x] 開発ログ (`development_logs/2026-02-28-issue-44.md`) の作成
