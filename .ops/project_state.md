@@ -5,6 +5,11 @@
 - **Objective**: Ensure system integrity, document separation, and skill optimization.
 
 ## Recent Activities
+- **Issue 46**: 
+    - Gemini CLI integration with Roo Code CLI (/run-roo) implementation.
+    - Automated installation of `roo` CLI.
+    - Command definition in `.gemini/commands/run-roo.toml` and `.md`.
+    - Verified environment variable (`OPENROUTER_API_KEY`) pick-up by `roo` CLI.
 - **Issue 38**: 
     - Master Definition Audit & Alignment.
     - README.md / AGENTS.md role separation.
