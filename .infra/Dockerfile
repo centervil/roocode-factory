@@ -32,6 +32,9 @@ RUN type -p curl >/dev/null || (apt-get update && apt-get install curl -y) \
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
+# Install Roo Code CLI
+RUN curl -fsSL https://raw.githubusercontent.com/RooCodeInc/Roo-Code/main/apps/cli/install.sh | bash
+
 # Install Playwright dependencies
 RUN npx playwright install-deps
 
@@ -45,6 +48,7 @@ RUN npx playwright install
 USER root
 RUN npm install -g playwright @google/gemini-cli
 ENV NODE_PATH=/usr/lib/node_modules
+ENV PATH="/home/coder/.local/bin:$PATH"
 USER coder
 
 # Create workspace directory
