@@ -13,22 +13,29 @@ fi
 # Extract values using python for reliability
 VALUES=$(python3 - <<EOF
 import json
+import os
 with open('$METRICS_FILE') as f:
     data = json.load(f)
-    m = data['metrics']
+    m = data.get('metrics', {})
+    sum = data.get('summary', {})
+    
     comp = m.get('compliance', {})
     auto = m.get('autonomy', {})
     score = comp.get('score', 0)
     fidelity = comp.get('protocol_fidelity', 0)
     alignment = comp.get('behavioral_alignment', 0)
     rate = auto.get('rate', 0)
-    print(f"{score}|{fidelity}|{alignment}|{rate}")
+    
+    tsr = sum.get('avg_tsr', 0)
+    sessions = sum.get('total_sessions', 0)
+    
+    print(f"{score}|{fidelity}|{alignment}|{rate}|{tsr}|{sessions}")
 EOF
 )
 
-IFS='|' read -r SCORE FIDELITY ALIGNMENT AUTO_RATE <<< "$VALUES"
+IFS='|' read -r SCORE FIDELITY ALIGNMENT AUTO_RATE TSR TOTAL_SESSIONS <<< "$VALUES"
 
-export SCORE FIDELITY ALIGNMENT AUTO_RATE
+export SCORE FIDELITY ALIGNMENT AUTO_RATE TSR TOTAL_SESSIONS
 
 python3 - <<EOF
 import re
@@ -41,6 +48,8 @@ score = os.environ['SCORE']
 fidelity = float(os.environ['FIDELITY']) * 100
 alignment = float(os.environ['ALIGNMENT']) * 100
 auto_rate = float(os.environ['AUTO_RATE']) * 100
+tsr = float(os.environ['TSR']) * 100
+sessions = os.environ['TOTAL_SESSIONS']
 
 metrics_section = f"""## Metrics (Snapshot)
 - **System Integrity (Dynamic)**:
@@ -48,6 +57,9 @@ metrics_section = f"""## Metrics (Snapshot)
     - Behavioral Alignment: {alignment:.1f}%
     - Overall Compliance Score: {score}
 - **Autonomy Rate**: {auto_rate:.1f}%
+- **AI Performance (Automated)**:
+    - Average TSR: {tsr:.1f}%
+    - Total Sessions Analyzed: {sessions}
 """
 
 # Replace existing metrics section or append if not found

@@ -3,53 +3,94 @@ import sys
 import re
 import os
 import json
+from datetime import datetime
 
 def parse_log(file_path):
     if not os.path.exists(file_path):
         print(f"File not found: {file_path}")
         return None
 
+    filename = os.path.basename(file_path)
+    # Parse timestamp and mode from filename: YYYYMMDD_HHMMSS_MODE.log
+    timestamp_str = "unknown"
+    mode = "unknown"
+    match = re.match(r'(\d{8}_\d{6})_(\w+)\.log', filename)
+    if match:
+        ts_raw = match.group(1)
+        mode = match.group(2)
+        try:
+            timestamp_str = datetime.strptime(ts_raw, '%Y%m%d_%H%M%S').isoformat() + "Z"
+        except ValueError:
+            pass
+
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Turn Count (TC): Count of [reasoning] sections
-    # Each turn typically starts with [reasoning] or [assistant]
-    # We'll use [reasoning] as a proxy for a turn start.
+    # Turn Count (TC): Count of [reasoning] sections (starts of turns)
+    # We filter out empty or very short reasoning if they are duplicates, 
+    # but usually one [reasoning] = one turn.
     turn_count = len(re.findall(r'\[reasoning\]', content))
 
-    # Tool calls: count [Tool Request] and [command request]
+    # Tool calls: count [Tool Request] [toolName]
+    # Example: [Tool Request] readFile
     tool_requests = re.findall(r'\[Tool Request\]\s+(\w+)', content)
+    
+    # [command request] is also a tool call in some versions/modes
     command_requests = re.findall(r'\[command request\]', content)
     
     total_tool_calls = len(tool_requests) + len(command_requests)
 
-    # Tool Errors: count "shell execution error:" or "Error:"
-    # This might be simplistic.
-    tool_errors = len(re.findall(r'shell execution error:', content)) + len(re.findall(r'\[Tool Result\].*?Error:', content, re.DOTALL | re.IGNORECASE))
+    # Tool Errors:
+    # 1. "[ExecaTerminalProcess#run] shell execution error:"
+    # 2. "[Tool Result] Error:"
+    # 3. "[CLI] Error:" (usually means prompt failed or something fatal)
+    error_patterns = [
+        r'shell execution error:',
+        r'\[Tool Result\].*?Error:',
+        r'\[CLI\] Error:',
+        r'\[ExecaTerminalProcess#run\].*?failed'
+    ]
+    tool_errors = 0
+    for pattern in error_patterns:
+        tool_errors += len(re.findall(pattern, content, re.DOTALL | re.IGNORECASE))
 
     # Success rate
     tsr = 1.0
     if total_tool_calls > 0:
-        tsr = (total_tool_calls - tool_errors) / total_tool_calls
+        # Avoid negative TSR if errors are double counted, clamp at 0
+        tsr = max(0.0, (total_tool_calls - tool_errors) / total_tool_calls)
+    elif tool_errors > 0:
+        # If no tool calls but errors, TSR is 0
+        tsr = 0.0
 
-    # Read vs Write
-    # Categorize tool_requests
-    read_tools = ['readFile', 'listFiles', 'listCodeDefinition', 'searchFiles', 'read_file', 'list_files', 'search_files', 'read_command_output']
-    write_tools = ['newFileCreated', 'applyDiff', 'editFile', 'write_to_file', 'apply_diff', 'update_todo_list']
+    # Read vs Write categorization
+    read_tools = [
+        'readFile', 'read_file', 
+        'listFiles', 'list_files', 
+        'listCodeDefinition', 'list_code_definition',
+        'searchFiles', 'search_files', 
+        'read_command_output', 'executeCommand' # executeCommand is often used for 'ls', 'cat', etc.
+    ]
+    write_tools = [
+        'newFileCreated', 'write_to_file',
+        'applyDiff', 'apply_diff', 
+        'editFile', 'insert_content',
+        'update_todo_list', 'delete_file'
+    ]
     
-    read_count = len([t for t in tool_requests if t in read_tools]) + len(command_requests) # command_requests are usually for investigation in this context
+    read_count = len([t for t in tool_requests if t in read_tools]) + len(command_requests)
     write_count = len([t for t in tool_requests if t in write_tools])
     
-    # Actually, command_requests can be writes too.
-    # We'll refine this later. For now, simplistic.
     rw_ratio = 0.0
     if write_count > 0:
         rw_ratio = read_count / write_count
     else:
-        rw_ratio = float(read_count) # Infinite if no writes but some reads
+        rw_ratio = float(read_count)
 
     return {
-        "file": os.path.basename(file_path),
+        "session_id": filename.replace(".log", ""),
+        "timestamp": timestamp_str,
+        "mode": mode,
         "turn_count": turn_count,
         "total_tool_calls": total_tool_calls,
         "tool_errors": tool_errors,

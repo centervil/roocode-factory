@@ -39,12 +39,37 @@ echo "--- [ROO WRAPPER] Starting Roo Code CLI (Mode: $MODE, Model: $MODEL) ---"
 echo "--- [ROO WRAPPER] Logging to $LOG_FILE ---"
 
 # Execute roo and capture stdout/stderr to log file while showing it in terminal
-# Using script command to capture everything (including colors/formatting) or tee
-# 'tee' is simpler for basic capture.
 "$ROO_BIN" --mode "$MODE" --model "$MODEL" --print "$PROMPT" 2>&1 | tee "$LOG_FILE"
 
 EXIT_CODE=${PIPESTATUS[0]}
 
 echo "--- [ROO WRAPPER] Roo Code CLI finished with exit code $EXIT_CODE ---"
+
+# --- Automation Pipeline: Metrics Extraction & Aggregation ---
+echo "--- [ROO WRAPPER] Starting metrics analysis for $LOG_FILE ---"
+
+EXTRACT_SCRIPT="/home/coder/project/.ops/scripts/extract_metrics.py"
+AGGREGATE_SCRIPT="/home/coder/project/.ops/scripts/aggregate_metrics.py"
+MD_UPDATE_SCRIPT="/home/coder/project/.ops/scripts/update_metrics_markdown.py"
+STATE_UPDATE_SCRIPT="/home/coder/project/.ops/scripts/update_state_metrics.sh"
+
+if [ -f "$EXTRACT_SCRIPT" ]; then
+    METRICS_JSON=$("$EXTRACT_SCRIPT" "$LOG_FILE")
+    if [ $? -eq 0 ] && [ -n "$METRICS_JSON" ]; then
+        if [ -f "$AGGREGATE_SCRIPT" ]; then
+            python3 "$AGGREGATE_SCRIPT" "$METRICS_JSON"
+        fi
+    fi
+fi
+
+if [ -f "$MD_UPDATE_SCRIPT" ]; then
+    python3 "$MD_UPDATE_SCRIPT"
+fi
+
+if [ -f "$STATE_UPDATE_SCRIPT" ]; then
+    bash "$STATE_UPDATE_SCRIPT"
+fi
+
+echo "--- [ROO WRAPPER] Metrics updated successfully ---"
 
 exit $EXIT_CODE

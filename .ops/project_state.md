@@ -26,8 +26,11 @@
 
 ## Metrics (Snapshot)
 - **System Integrity (Dynamic)**:
-    - Protocol Fidelity: 50.0%
-    - Behavioral Alignment: 100.0%
-    - Overall Compliance Score: 75.0
-- **Autonomy Rate**: 100.0%
+    - Protocol Fidelity: 0.0%
+    - Behavioral Alignment: 0.0%
+    - Overall Compliance Score: 0
+- **Autonomy Rate**: 0.0%
+- **AI Performance (Automated)**:
+    - Average TSR: 94.0%
+    - Total Sessions Analyzed: 3
 

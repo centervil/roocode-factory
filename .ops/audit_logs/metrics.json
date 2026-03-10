@@ -1,16 +1,67 @@
 {
-  "timestamp": "2026-02-24T14:15:51Z",
+  "timestamp": "2026-03-10T10:48:15Z",
   "metrics": {
-    "compliance": {
-      "protocol_fidelity": 0.5,
-      "behavioral_alignment": 1.0,
-      "score": 75.0,
-      "sessions_analyzed": 2
+    "code_churn": {
+      "commit_count_last_7_days": 9,
+      "lines_changed_last_7_days": 0
     },
+    "test_status": "Failed",
+    "test_exit_code": 1,
     "autonomy": {
-      "total_actions": 20,
+      "total_actions": 0,
       "interventions": 0,
-      "rate": 1.0
+      "rate": 0
+    },
+    "compliance": {
+      "protocol_fidelity": 0,
+      "behavioral_alignment": 0,
+      "score": 0
     }
-  }
+  },
+  "sessions": [
+    {
+      "session_id": "20260310_103709_code",
+      "timestamp": "2026-03-10T10:37:09Z",
+      "mode": "code",
+      "turn_count": 55,
+      "total_tool_calls": 54,
+      "tool_errors": 10,
+      "tool_success_rate": 0.81,
+      "read_count": 41,
+      "write_count": 0,
+      "read_to_write_ratio": 41.0
+    },
+    {
+      "session_id": "20260309_223814_code",
+      "timestamp": "2026-03-09T22:38:14Z",
+      "mode": "code",
+      "turn_count": 2,
+      "total_tool_calls": 1,
+      "tool_errors": 0,
+      "tool_success_rate": 1.0,
+      "read_count": 0,
+      "write_count": 1,
+      "read_to_write_ratio": 0.0
+    },
+    {
+      "session_id": "20260310_140456_ask",
+      "timestamp": "2026-03-10T14:04:56Z",
+      "mode": "ask",
+      "turn_count": 4,
+      "total_tool_calls": 2,
+      "tool_errors": 0,
+      "tool_success_rate": 1.0,
+      "read_count": 2,
+      "write_count": 0,
+      "read_to_write_ratio": 2.0
+    }
+  ],
+  "summary": {
+    "total_sessions": 3,
+    "avg_tsr": 0.94,
+    "total_turns": 61,
+    "total_tool_calls": 57,
+    "avg_rw_ratio": 14.33
+  },
+  "last_updated": "2026-03-10T14:07:04.655322Z"
 }
