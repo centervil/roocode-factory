@@ -1,36 +1,32 @@
 # Project State: Roocode Factory
 
 ## Current Phase: Phase 4 (Release Candidate)
-- **Status**: Issue 38 (Final Audit & Cleanup) Completed.
-- **Objective**: Ensure system integrity, document separation, and skill optimization.
+- **Status**: Issue 55 (Metrics Logic Refactoring) Completed.
+- **Objective**: Finalize observability and visual health monitoring before release.
 
 ## Recent Activities
+- **Issue 55 (Completed)**: 
+    - Revamped `/self-optimize` command and `skill-self-optimizer`.
+    - Implemented RAW log-based metrics extraction for high reliability.
+    - Integrated Integrity Score for objective system health assessment.
 - **Issue 46**: 
     - Gemini CLI integration with Roo Code CLI (/run-roo) implementation.
     - Automated installation of `roo` CLI.
-    - Command definition in `.gemini/commands/run-roo.toml` and `.md`.
-    - Verified environment variable (`OPENROUTER_API_KEY`) pick-up by `roo` CLI.
-- **Issue 38**: 
-    - Master Definition Audit & Alignment.
-    - README.md / AGENTS.md role separation.
-    - Global Skill Template Compliance (added Output Contract).
-    - Mode Guidelines (10-operational-guidelines.md) completion for all 8 modes.
-    - Protcol definition (`interaction_schema.yaml`) creation.
-    - Dead asset/link cleanup (broken symlinks fix, `test-project` deletion).
 
 ## Completed Tasks
 - [x] Issue 38: Final Full Repository Audit & Cleanup
+- [x] Issue 55: RAW ログからのメトリクス抽出ロジックの改善 (Metrics Logic Revamp)
 
 ## Next Tasks
-- [ ] Prepare for final system validation and Release.
+- [ ] **Issue 56**: [可視化] メトリクス・ダッシュボードの導入 (Mermaid.js)
+- [ ] Final system validation and Release.
 
 ## Metrics (Snapshot)
 - **System Integrity (Dynamic)**:
-    - Protocol Fidelity: 0.0%
-    - Behavioral Alignment: 0.0%
-    - Overall Compliance Score: 0
-- **Autonomy Rate**: 0.0%
+    - Protocol Fidelity: 76.3%
+    - Behavioral Alignment: 39.8%
+    - Overall Compliance Score: 58.1
+- **Autonomy Rate**: 60.3%
 - **AI Performance (Automated)**:
-    - Average TSR: 94.0%
-    - Total Sessions Analyzed: 3
-
+    - Average TSR: 76.0%
+    - Total Sessions Analyzed: 5
