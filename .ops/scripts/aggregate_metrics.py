@@ -39,17 +39,23 @@ def aggregate(new_metrics_json):
         data['sessions'] = []
     data['sessions'].append(new_metrics)
 
-    # Keep only last 50 sessions to avoid file bloating
+    # Keep only last 50 sessions
     if len(data['sessions']) > 50:
         data['sessions'] = data['sessions'][-50:]
 
-    # Update summary
+    # Update summary and metrics
     sessions = data['sessions']
     count = len(sessions)
+    
     total_tsr = sum(s.get('tool_success_rate', 0) for s in sessions)
     total_turns = sum(s.get('turn_count', 0) for s in sessions)
     total_tool_calls = sum(s.get('total_tool_calls', 0) for s in sessions)
     total_rw_ratio = sum(s.get('read_to_write_ratio', 0) for s in sessions)
+
+    # Calculate Integrity (Compliance)
+    total_score = sum(s.get('integrity', {}).get('score', 0) for s in sessions)
+    total_fidelity = sum(s.get('integrity', {}).get('protocol_fidelity', 0) for s in sessions)
+    total_alignment = sum(s.get('integrity', {}).get('behavioral_alignment', 0) for s in sessions)
 
     data['summary'] = {
         "total_sessions": count,
@@ -58,6 +64,17 @@ def aggregate(new_metrics_json):
         "total_tool_calls": total_tool_calls,
         "avg_rw_ratio": round(total_rw_ratio / count, 2) if count > 0 else 0
     }
+    
+    data['metrics']['compliance'] = {
+        "score": round(total_score / count, 1) if count > 0 else 0,
+        "protocol_fidelity": round(total_fidelity / count, 1) if count > 0 else 0,
+        "behavioral_alignment": round(total_alignment / count, 1) if count > 0 else 0,
+        "sessions_analyzed": count
+    }
+
+    # Heuristic Autonomy Rate (Inverse of turn count / tool calls)
+    # More autonomous agents do more per turn.
+    data['metrics']['autonomy']['rate'] = round(min(100, (total_tool_calls / (total_turns * 1.5)) * 100), 1) if total_turns > 0 else 0
     
     data['last_updated'] = datetime.utcnow().isoformat() + "Z"
 
