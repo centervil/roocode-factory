@@ -49,6 +49,7 @@ echo "--- [ROO WRAPPER] Roo Code CLI finished with exit code $EXIT_CODE ---"
 echo "--- [ROO WRAPPER] Starting metrics analysis for $LOG_FILE ---"
 
 EXTRACT_SCRIPT="/home/coder/project/.ops/scripts/extract_metrics.py"
+COMPLIANCE_AUDIT_SCRIPT="/home/coder/project/.ops/scripts/compliance_audit.py"
 AGGREGATE_SCRIPT="/home/coder/project/.ops/scripts/aggregate_metrics.py"
 MD_UPDATE_SCRIPT="/home/coder/project/.ops/scripts/update_metrics_markdown.py"
 STATE_UPDATE_SCRIPT="/home/coder/project/.ops/scripts/update_state_metrics.sh"
@@ -56,6 +57,19 @@ STATE_UPDATE_SCRIPT="/home/coder/project/.ops/scripts/update_state_metrics.sh"
 if [ -f "$EXTRACT_SCRIPT" ]; then
     METRICS_JSON=$("$EXTRACT_SCRIPT" "$LOG_FILE")
     if [ $? -eq 0 ] && [ -n "$METRICS_JSON" ]; then
+        # Run Behavioral Compliance Audit if available
+        if [ -f "$COMPLIANCE_AUDIT_SCRIPT" ]; then
+            echo "--- [ROO WRAPPER] Starting behavioral compliance audit ---"
+            # Ensure OPENROUTER_API_KEY is available (it's already exported if in .env)
+            COMPLIANCE_JSON=$(python3 "$COMPLIANCE_AUDIT_SCRIPT" "$LOG_FILE")
+            if [ $? -eq 0 ] && [ -n "$COMPLIANCE_JSON" ]; then
+                # Merge JSONs using Python to overwrite heuristic metrics with real LLM audit
+                METRICS_JSON=$(python3 -c "import sys, json; m1=json.loads(sys.argv[1]); m2=json.loads(sys.argv[2]); score=m2['audit'].get('compliance_score', m1['integrity']['behavioral_alignment']); m1['compliance_audit'] = m2['audit']; m1['integrity']['behavioral_alignment'] = score; m1['integrity']['score'] = round((m1['integrity']['protocol_fidelity'] + score) / 2.0, 1); print(json.dumps(m1))" "$METRICS_JSON" "$COMPLIANCE_JSON")
+                # Save compliance report for reference
+                echo "$COMPLIANCE_JSON" > "${RAW_LOG_DIR}/${TIMESTAMP}_compliance.json"
+            fi
+        fi
+
         if [ -f "$AGGREGATE_SCRIPT" ]; then
             python3 "$AGGREGATE_SCRIPT" "$METRICS_JSON"
         fi
