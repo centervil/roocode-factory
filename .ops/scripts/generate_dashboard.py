@@ -38,11 +38,22 @@ def generate_mermaid_charts(data):
     else:
         pie_chart = f"```mermaid\npie title \"Tool Usage (Read vs Write) - Session: {last['session_id']}\"\n    \"Read Tools\" : {read}\n    \"Write Tools\" : {write}\n```"
 
-    # 3. Autonomy Level (Pie chart: Autonomous vs Manual intervention)
-    # Mermaid requirementDiagram was failing. Using Pie chart for clarity.
+    # 3. Autonomy Level
     auto_rate = metrics.get('autonomy', {}).get('rate', 0)
     manual_rate = max(0, 100.0 - auto_rate)
     autonomy_chart = f"```mermaid\npie title \"System Autonomy Rate ({auto_rate}%)\"\n    \"Autonomous\" : {auto_rate}\n    \"Intervention Needed\" : {manual_rate}\n```"
+
+    # 4. Architectural Compliance Trend (Last 10 sessions)
+    comp_recent = sessions[-10:]
+    comp_labels = []
+    for i, s in enumerate(comp_recent):
+        comp_labels.append(f"\"{i+1}:{s['mode']}\"")
+    
+    comp_chart = "```mermaid\nxychart-beta\n    title \"Architectural Compliance (Behavioral Alignment) Trend\"\n    x-axis ["
+    comp_chart += ", ".join(comp_labels)
+    comp_chart += "]\n    y-axis \"Compliance Score (0-100)\" 0 --> 100\n    line ["
+    comp_chart += ", ".join([str(int(s.get("integrity", {}).get("behavioral_alignment", 0))) for s in comp_recent])
+    comp_chart += "]\n```"
 
     return f"""## 📊 Visual Metrics Dashboard
 
@@ -54,6 +65,9 @@ def generate_mermaid_charts(data):
 
 ### 🤖 Autonomy Level
 {autonomy_chart}
+
+### ⚖️ Architectural Compliance (Behavioral Alignment)
+{comp_chart}
 """
 
 def update_dashboard():
@@ -76,6 +90,7 @@ def update_dashboard():
 - **TSR Trend**: Indicates the stability of tool executions. Higher is better.
 - **Tool Usage**: Shows the balance between investigation (Read) and implementation (Write).
 - **Autonomy**: High autonomy means the agent is completing more tasks without needing manual intervention.
+- **Architectural Compliance**: Measures how well the agent follows its Mode-specific rules (Must/Must Not). Evaluated by LLM-as-a-Judge.
 
 ---
 [← Back to METRICS.md](../.ops/metrics/METRICS.md) | [Home](../README.md)

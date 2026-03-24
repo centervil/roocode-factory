@@ -18,6 +18,7 @@ services:
       - ~/.gemini:/home/coder/.gemini
       - ~/.tmux.conf:/home/coder/.tmux.conf
       - ..:/home/coder/project
+      - /home/centervil/download:/home/coder/project/download
     environment:
       - PASSWORD=${CODE_SERVER_PASSWORD:-password}
       - TAILSCALE_AUTH_KEY=${TAILSCALE_AUTH_KEY}

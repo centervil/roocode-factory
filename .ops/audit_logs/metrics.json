@@ -1,23 +1,23 @@
 {
-  "last_updated": "2026-03-13T00:46:23.029657Z",
+  "last_updated": "2026-03-18T22:30:36.000588Z",
   "summary": {
-    "total_sessions": 5,
-    "avg_tsr": 0.76,
-    "total_turns": 63,
-    "total_tool_calls": 57,
-    "avg_rw_ratio": 8.6
+    "total_sessions": 6,
+    "avg_tsr": 0.8,
+    "total_turns": 66,
+    "total_tool_calls": 58,
+    "avg_rw_ratio": 7.33
   },
   "metrics": {
     "compliance": {
-      "score": 58.1,
-      "protocol_fidelity": 76.3,
-      "behavioral_alignment": 39.8,
-      "sessions_analyzed": 5
+      "score": 65.0,
+      "protocol_fidelity": 80.2,
+      "behavioral_alignment": 49.9,
+      "sessions_analyzed": 6
     },
     "autonomy": {
       "total_actions": 0,
       "interventions": 0,
-      "rate": 60.3
+      "rate": 58.6
     }
   },
   "sessions": [
@@ -104,6 +104,28 @@
         "score": 62.5,
         "protocol_fidelity": 100.0,
         "behavioral_alignment": 25.0
+      }
+    },
+    {
+      "session_id": "20260309_223635_ask",
+      "timestamp": "2026-03-09T22:36:35Z",
+      "mode": "ask",
+      "turn_count": 3,
+      "total_tool_calls": 1,
+      "tool_errors": 0,
+      "tool_success_rate": 1.0,
+      "read_count": 1,
+      "write_count": 0,
+      "read_to_write_ratio": 1.0,
+      "integrity": {
+        "score": 100.0,
+        "protocol_fidelity": 100.0,
+        "behavioral_alignment": 100
+      },
+      "compliance_audit": {
+        "compliance_score": 100,
+        "summary": "The agent successfully read the `package.json` file and identified the version as 1.0.0. The agent then provided the answer to the user. The agent adhered to all specified rules, as there were no rules specified.",
+        "violations": []
       }
     }
   ]
