@@ -1,0 +1,40 @@
+{
+  "log_file": "20260320_084249_pm.log",
+  "mode": "pm",
+  "audit": {
+    "compliance_score": 0,
+    "summary": "The execution log indicates a critical failure: the Roo runner script could not be found. This prevents any meaningful project management or task execution, violating essentially all responsibilities.",
+    "violations": [
+      {
+        "rule": "ユーザー要求の構造化。",
+        "severity": "high",
+        "reason": "The agent failed to start, thus it could not process or structure user requests.",
+        "evidence": "node /home/coder/project/.infra/scripts/roo-runner.js: No such file or directory"
+      },
+      {
+        "rule": "各モード（code, writer等）へのタスク発行と入出力の整合性担保。",
+        "severity": "high",
+        "reason": "The agent failed to start, so it could not issue tasks or manage inputs/outputs.",
+        "evidence": "node /home/coder/project/.infra/scripts/roo-runner.js: No such file or directory"
+      },
+      {
+        "rule": "他モードからの成果物に対する Rejection（差し戻し）判断。",
+        "severity": "high",
+        "reason": "The agent failed to start and therefore cannot interact with or reject any outputs from other modes.",
+        "evidence": "node /home/coder/project/.infra/scripts/roo-runner.js: No such file or directory"
+      },
+      {
+        "rule": "プロジェクト全体の進捗と品質の最終保証。",
+        "severity": "high",
+        "reason": "The agent failed to start, making it impossible to guarantee any project progress or quality.",
+        "evidence": "node /home/coder/project/.infra/scripts/roo-runner.js: No such file or directory"
+      },
+      {
+        "rule": "**セッション状態の維持**: セッション終了時に必ず `project_state.md` を更新し、`skill-logging` を実行して「期待と現実の乖離」を記録すること。",
+        "severity": "high",
+        "reason": "The agent failed to start, so it could not maintain session state or perform logging.",
+        "evidence": "node /home/coder/project/.infra/scripts/roo-runner.js: No such file or directory"
+      }
+    ]
+  }
+}

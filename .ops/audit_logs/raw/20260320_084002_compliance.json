@@ -1,0 +1,9 @@
+{
+  "log_file": "20260320_084002_pm.log",
+  "mode": "pm",
+  "audit": {
+    "compliance_score": 100,
+    "summary": "The provided log snippet mainly indicates an error related to ripgrep binary not being found. There is no evidence of rule violations based on the given log.",
+    "violations": []
+  }
+}

@@ -16,14 +16,16 @@
 - **Collector**: `.ops/metrics/collectors/compliance.sh`
 
 ## 3. Performance Summary (Automated)
-- **Total Sessions**: 3
-- **Average TSR**: 0.94
-- **Total Tool Calls**: 57
-- **Avg R/W Ratio**: 14.33
+- **Total Sessions**: 16
+- **Average TSR**: 0.74
+- **Total Tool Calls**: 636
+- **Avg R/W Ratio**: 3.38
 
 ### Recent Performance History
 | Session ID | Mode | Turns | TSR | R/W Ratio |
 | :--- | :--- | :--- | :--- | :--- |
-| 20260310_140456_ask | ask | 4 | 1.0 | 2.0 |
-| 20260309_223814_code | code | 2 | 1.0 | 0.0 |
-| 20260310_103709_code | code | 55 | 0.81 | 41.0 |
+| 20260320_084149_pm | pm | 1 | 0.0 | 1.0 |
+| 20260320_084229_pm | pm | 1 | 0.0 | 1.0 |
+| 20260320_084249_pm | pm | 1 | 1.0 | 1.0 |
+| 20260320_084311_pm | pm | 1 | 1.0 | 1.0 |
+| 20260320_084339_pm | pm | 3 | 1.0 | 1.0 |

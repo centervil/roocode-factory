@@ -1,0 +1,34 @@
+{
+  "log_file": "20260319_131353_pm.log",
+  "mode": "pm",
+  "audit": {
+    "compliance_score": 20,
+    "summary": "The provided log shows the help message for the `gemini` command-line interface (CLI). The usage information indicates an attempt to use the `mode` argument directly within the gemini command. This is a direct violation of the rule forbidding direct instructions to end-point modes without orchestrator intervention, as it suggests someone is trying to specify the operating `mode` parameter directly in the command.",
+    "violations": [
+      {
+        "rule": "**階層バイパス**: Orchestrator を介さずに、Code, Writer 等の末端 Mode に直接指示を出すこと。",
+        "severity": "high",
+        "reason": "The CLI help message shows 'Unknown arguments: mode'. This demonstrates an attempt to directly specify the `mode` argument in the command, bypassing the intended orchestrator-based structure.",
+        "evidence": "Unknown arguments: mode"
+      },
+      {
+        "rule": "ユーザー要求の構造化。",
+        "severity": "low",
+        "reason": "The log only shows the CLI help message, no user request and subsequently no structured process could occur.",
+        "evidence": "Usage: gemini [options] [command]"
+      },
+      {
+        "rule": "各モード（code, writer等）へのタスク発行と入出力の整合性担保。",
+        "severity": "low",
+        "reason": "The log only shows the CLI help message, there is no evidence any tasks are being issued to different modes.",
+        "evidence": "Options:\n  -d, --debug                     Run in debug mode"
+      },
+      {
+        "rule": "**セッション状態の維持**: セッション終了時に必ず `project_state.md` を更新し、`skill-logging` を実行して「期待と現実の乖離」を記録すること。",
+        "severity": "low",
+        "reason": "The log only shows the CLI help message, there is no session state to be maintained, or skill-logging taking place.",
+        "evidence": "Options:\n  -d, --debug                     Run in debug mode"
+      }
+    ]
+  }
+}

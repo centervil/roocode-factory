@@ -27,12 +27,16 @@ def aggregate(new_metrics_json):
         with open(METRICS_FILE, 'r') as f:
             data = json.load(f)
 
-    new_metrics = json.loads(new_metrics_json)
+    try:
+        new_metrics = json.loads(new_metrics_json)
+    except json.JSONDecodeError:
+        print("Invalid JSON input.")
+        return
     
     # Check for duplicate session_id
-    if any(s.get('session_id') == new_metrics['session_id'] for s in data.get('sessions', [])):
-        print(f"Session {new_metrics['session_id']} already aggregated. Skipping.")
-        return
+    if any(s.get('session_id') == new_metrics.get('session_id') for s in data.get('sessions', [])):
+        print(f"Session {new_metrics.get('session_id')} already aggregated. Updating existing entry.")
+        data['sessions'] = [s for s in data['sessions'] if s.get('session_id') != new_metrics.get('session_id')]
 
     # Add to sessions list
     if 'sessions' not in data:
@@ -72,16 +76,18 @@ def aggregate(new_metrics_json):
         "sessions_analyzed": count
     }
 
-    # Heuristic Autonomy Rate (Inverse of turn count / tool calls)
-    # More autonomous agents do more per turn.
-    data['metrics']['autonomy']['rate'] = round(min(100, (total_tool_calls / (total_turns * 1.5)) * 100), 1) if total_turns > 0 else 0
+    # Autonomy Rate: Percentage of sessions with more than 2 tools per turn on average
+    # Or simplified: (Avg Tool per Turn / Target Tool per Turn) * 100
+    avg_tool_per_turn = total_tool_calls / total_turns if total_turns > 0 else 0
+    # Let's say 2.5 tools per turn is "highly autonomous" (100%)
+    data['metrics']['autonomy']['rate'] = round(min(100.0, (avg_tool_per_turn / 2.5) * 100.0), 1)
     
     data['last_updated'] = datetime.utcnow().isoformat() + "Z"
 
     with open(METRICS_FILE, 'w') as f:
         json.dump(data, f, indent=2)
 
-    print(f"Successfully aggregated session {new_metrics['session_id']}.")
+    print(f"Successfully aggregated session {new_metrics.get('session_id')}.")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

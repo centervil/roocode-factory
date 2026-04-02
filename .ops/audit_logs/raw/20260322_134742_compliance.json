@@ -1,0 +1,7 @@
+{
+  "log_file": "20260322_134742_pm.log",
+  "mode": "pm",
+  "audit": {
+    "error": "HTTP Error 403: Forbidden"
+  }
+}

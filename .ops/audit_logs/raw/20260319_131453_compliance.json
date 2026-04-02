@@ -1,0 +1,9 @@
+{
+  "log_file": "20260319_131453_dev.log",
+  "mode": "dev",
+  "audit": {
+    "compliance_score": 100,
+    "summary": "The log indicates several errors, including MCP errors, Gemini API errors (specifically a ModelNotFoundError), and an unexpected critical error. However, there are no specific rules provided to evaluate compliance against. Assuming the absence of rules implies no violations, the compliance score is 100.",
+    "violations": []
+  }
+}

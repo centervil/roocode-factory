@@ -1,48 +1,54 @@
-# 🚀 Project Dashboard: Roocode Factory
+# Metrics Dashboard
 
-*Last Updated: 2026-03-18T22:30:36.032636*
+This dashboard visualizes the health and performance of the Roocode Factory system based on session logs.
 
-## 📊 Visual Metrics Dashboard
+### Autonomy Rate (AI vs Human)
 
-### 📈 Tool Success Rate (TSR) Trend
+```mermaid
+pie title Autonomy vs Intervention
+    "Autonomous Actions" : 100.0
+    "Manual Interventions" : 0.0
+```
+
+### Tool Success Rate (TSR) Trend
+
 ```mermaid
 xychart-beta
-    title "Tool Success Rate (TSR) Trend (Last 10 Sessions)"
-    x-axis ["1:code", "2:code", "3:code", "4:code", "5:ask", "6:ask"]
-    y-axis "Success Rate (%)" 0 --> 100
-    line [100, 100, 0, 81, 100, 100]
+    title "TSR per Session (Last 10)"
+    x-axis ["742_pm", "938_pm", "701_pm", "719_pm", "504_pm", "339_pm", "311_pm", "249_pm", "229_pm", "149_pm"]
+    y-axis "Success Rate" 0 --> 1
+    line [1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0]
 ```
 
-### 🍕 Tool Usage (Last Session)
+### System Integrity Profile
+
 ```mermaid
-pie title "Tool Usage (Read vs Write) - Session: 20260309_223635_ask"
-    "Read Tools" : 1
-    "Write Tools" : 0
-```
+requirementDiagram
 
-### 🤖 Autonomy Level
-```mermaid
-pie title "System Autonomy Rate (58.6%)"
-    "Autonomous" : 58.6
-    "Intervention Needed" : 41.4
-```
+    requirement Integrity_Score {
+    id: 1
+    text: Overall Score
+    risk: low
+    verifymethod: analysis
+    }
 
-### ⚖️ Architectural Compliance (Behavioral Alignment)
-```mermaid
-xychart-beta
-    title "Architectural Compliance (Behavioral Alignment) Trend"
-    x-axis ["1:code", "2:code", "3:code", "4:code", "5:ask", "6:ask"]
-    y-axis "Compliance Score (0-100)" 0 --> 100
-    line [0, 25, 100, 49, 25, 100]
-```
+    requirement Protocol_Fidelity {
+    id: 2
+    text: 73.8%
+    risk: low
+    verifymethod: test
+    }
 
+    requirement Behavioral_Alignment {
+    id: 3
+    text: 37.8%
+    risk: low
+    verifymethod: inspection
+    }
+
+    Integrity_Score - satisfies -> Protocol_Fidelity
+    Integrity_Score - satisfies -> Behavioral_Alignment
+```
 
 ---
-## ℹ️ How to read
-- **TSR Trend**: Indicates the stability of tool executions. Higher is better.
-- **Tool Usage**: Shows the balance between investigation (Read) and implementation (Write).
-- **Autonomy**: High autonomy means the agent is completing more tasks without needing manual intervention.
-- **Architectural Compliance**: Measures how well the agent follows its Mode-specific rules (Must/Must Not). Evaluated by LLM-as-a-Judge.
-
----
-[← Back to METRICS.md](../.ops/metrics/METRICS.md) | [Home](../README.md)
+*Last Updated: 2026-04-02T03:12:56.856416Z*

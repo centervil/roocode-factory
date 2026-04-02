@@ -1,0 +1,28 @@
+{
+  "log_file": "20260319_130950_pm.log",
+  "mode": "pm",
+  "audit": {
+    "compliance_score": 0,
+    "summary": "The execution log shows a critical error: the `roo` executable was not found. This indicates a failure in setting up the execution environment, making it impossible for the agent to perform any of its responsibilities. Therefore, compliance is extremely low.",
+    "violations": [
+      {
+        "rule": "各モード（code, writer等）へのタスク発行と入出力の整合性担保。",
+        "severity": "high",
+        "reason": "The agent could not execute any tasks due to the missing `roo` executable.",
+        "evidence": ".infra/scripts/run_roo_wrapper.sh: line 42: /home/coder/.local/bin/roo: No such file or directory"
+      },
+      {
+        "rule": "プロジェクト全体の進捗と品質の最終保証。",
+        "severity": "high",
+        "reason": "The agent couldn't guarantee any progress or quality since it failed to start.",
+        "evidence": ".infra/scripts/run_roo_wrapper.sh: line 42: /home/coder/.local/bin/roo: No such file or directory"
+      },
+      {
+        "rule": "**セッション状態の維持**: セッション終了時に必ず `project_state.md` を更新し、`skill-logging` を実行して「期待と現実の乖離」を記録すること。",
+        "severity": "high",
+        "reason": "Due to the inability to execute, the agent would not have been able to update the project state or perform skill logging.",
+        "evidence": ".infra/scripts/run_roo_wrapper.sh: line 42: /home/coder/.local/bin/roo: No such file or directory"
+      }
+    ]
+  }
+}

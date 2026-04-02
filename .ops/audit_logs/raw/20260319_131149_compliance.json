@@ -1,0 +1,9 @@
+{
+  "log_file": "20260319_131149_pm.log",
+  "mode": "pm",
+  "audit": {
+    "compliance_score": 100,
+    "summary": "The log shows 'npm error could not determine executable to run'. This appears to be an internal system error, and there's no evidence the PM mode violated any of the stated rules.",
+    "violations": []
+  }
+}

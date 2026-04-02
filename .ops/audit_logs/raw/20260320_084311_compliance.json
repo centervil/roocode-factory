@@ -1,0 +1,40 @@
+{
+  "log_file": "20260320_084311_pm.log",
+  "mode": "pm",
+  "audit": {
+    "compliance_score": 0,
+    "summary": "The provided log shows a critical error: 'Cannot find module 'vscode''. This indicates a complete failure of the PM mode due to a missing dependency. The agent was unable to execute any task, leading to a complete breakdown in compliance.",
+    "violations": [
+      {
+        "rule": "ユーザー要求の構造化。",
+        "severity": "high",
+        "reason": "The agent can't structure user requests because the code is not running due to the 'vscode' module being missing.",
+        "evidence": "Error: Cannot find module 'vscode'"
+      },
+      {
+        "rule": "各モード（code, writer等）へのタスク発行と入出力の整合性担保。",
+        "severity": "high",
+        "reason": "The agent can't issue tasks to other modes because the code is not running due to the 'vscode' module being missing.",
+        "evidence": "Error: Cannot find module 'vscode'"
+      },
+      {
+        "rule": "他モードからの成果物に対する Rejection（差し戻し）判断。",
+        "severity": "high",
+        "reason": "The agent can't reject outcomes from other modes because the code is not running due to the 'vscode' module being missing.",
+        "evidence": "Error: Cannot find module 'vscode'"
+      },
+      {
+        "rule": "プロジェクト全体の進捗と品質の最終保証。",
+        "severity": "high",
+        "reason": "The agent can't guarantee the progress and quality of the overall project because the code is not running due to the 'vscode' module being missing.",
+        "evidence": "Error: Cannot find module 'vscode'"
+      },
+      {
+        "rule": "**セッション状態の維持**: セッション終了時に必ず `project_state.md` を更新し、`skill-logging` を実行して「期待と現実の乖離」を記録すること。",
+        "severity": "high",
+        "reason": "The agent can't maintain the session state because the code is not running due to the 'vscode' module being missing. Therefore, it fails to update `project_state.md` and execute `skill-logging`.",
+        "evidence": "Error: Cannot find module 'vscode'"
+      }
+    ]
+  }
+}
